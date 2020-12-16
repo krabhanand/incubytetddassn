@@ -59,7 +59,13 @@ public class AppTest
         assertEquals(25,stringCalculator.add("2,12\n4\n1,6"));
     }
 
-    
+    @Test
+    public void addCustomDelimiter()
+    {
+        assertEquals(100,stringCalculator.add("//;\n1;2;57;40"));
+    }
+
+
 
 
     
