@@ -1,7 +1,7 @@
 package incubyte;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -9,12 +9,19 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
+
+    private static StringCalculator stringCalculator;
+
+    @BeforeClass
+    public static void initialize ()
     {
-        assertTrue( true );
+        stringCalculator = new StringCalculator();
+    }
+
+    //give empty string as parameter to add function
+    @Test
+    public void addEmptyString()
+    {
+        assertEquals(0,stringCalculator.add(""));
     }
 }
