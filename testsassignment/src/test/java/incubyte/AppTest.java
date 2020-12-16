@@ -7,13 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 /**
  * Unit test for simple App.
  */
 public class AppTest 
 {
+   
 
     private static StringCalculator stringCalculator;
+
+    @BeforeEach
+    public void setCounterZero(){
+        stringCalculator.setCallCount(0);
+    }
+
 
     @BeforeClass
     public static void initialize ()
@@ -119,6 +127,16 @@ public class AppTest
         assertTrue(actualMessage.contains(""+numExcep));
     }
 
+
+    @Test
+    public void testCallCount(){
+        stringCalculator.add("2,1,6,4");
+        stringCalculator.add("2,1,6,8");
+        stringCalculator.add("2,1,6,7");
+        stringCalculator.add("2,1,6,6");
+        stringCalculator.add("2,1,6,2");
+        assertEquals(5,stringCalculator.getCallCount());
+    }
 
 
     
