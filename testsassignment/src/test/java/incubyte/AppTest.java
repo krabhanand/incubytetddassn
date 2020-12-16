@@ -143,5 +143,10 @@ public class AppTest
         assertEquals(90,stringCalculator.add("2,56,32,4443"));
     }
 
+    @Test
+    public void allowDelimitersOfAllLengths() throws Exception{
+        assertEquals(50,stringCalculator.add("//[***]\n1***2***47"));
+    }
+
     
 }

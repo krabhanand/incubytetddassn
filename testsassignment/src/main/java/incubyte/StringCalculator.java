@@ -46,7 +46,8 @@ public class StringCalculator{
                 }
                 throw new NumberFormatException("negatives not allowed : "+numExepList.toString());
             }
-            sum += temp;
+            if(temp <= 1000)
+                sum += temp;
         }
         return sum;
     
