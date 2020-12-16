@@ -59,6 +59,8 @@ public class AppTest
         assertEquals(25,stringCalculator.add("2,12\n4\n1,6"));
     }
 
+    
+
 
     
 }
