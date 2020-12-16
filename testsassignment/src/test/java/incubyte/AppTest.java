@@ -38,5 +38,21 @@ public class AppTest
         assertEquals(5,stringCalculator.add("2,3"));
         assertNotEquals(4,stringCalculator.add("2,3"));
     }
+
+    @Test
+    public void addMultipleNumberString(){
+        assertEquals(6,stringCalculator.add("1,2,3"));
+        assertEquals(20,stringCalculator.add("2,5,6,3,4"));
+        assertEquals(55,stringCalculator.add("1,2,3,4,5,6,7,8,9,10"));
+
+        StringBuilder temp = new StringBuilder("");
+        for(int i = 1;i <= 22;i++)
+        {
+            temp.append((2*i-1)+",");
+        }
+        assertEquals(484,stringCalculator.add(temp.toString()));
+    }
+
+
     
 }
