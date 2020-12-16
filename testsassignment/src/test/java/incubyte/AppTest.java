@@ -53,6 +53,12 @@ public class AppTest
         assertEquals(484,stringCalculator.add(temp.toString()));
     }
 
+    @Test
+    public void addNewLineAsSeparator()
+    {
+        assertEquals(25,stringCalculator.add("2,12\n4\n1,6"));
+    }
+
 
     
 }
