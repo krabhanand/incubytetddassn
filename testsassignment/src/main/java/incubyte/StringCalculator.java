@@ -35,7 +35,12 @@ public class StringCalculator{
         for(int i = 0;i<nums.length;i++){
             int temp = Integer.parseInt(nums[i]);
             if(temp < 0) {
-                throw new NumberFormatException("negatives not allowed : "+temp);
+                StringBuilder numExepList = new StringBuilder("");
+                for(;i< nums.length; i++){
+                    if(Integer.parseInt(nums[i]) < 0)
+                        numExepList.append(nums[i]+" ");
+                }
+                throw new NumberFormatException("negatives not allowed : "+numExepList.toString());
             }
             sum += temp;
         }
