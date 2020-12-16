@@ -6,15 +6,15 @@ import java.util.regex.Pattern;
 
 public class StringCalculator{
     
-    private Pattern pattern;
-    private Matcher matcher;
     
     StringCalculator(){
 
     }
-    public int add(String numbers){
+    public int add(String numbers) throws Exception{
         if(numbers.equals(""))
             return 0;
+        Pattern pattern;
+        Matcher matcher;
         pattern = Pattern.compile("//");
         matcher = pattern.matcher(numbers);
         String delimiter = "";
@@ -32,8 +32,13 @@ public class StringCalculator{
         }
         String[] nums = numbers.split(delimiter);
         int sum = 0;
-        for(int i = 0;i<nums.length;i++)
-            sum += Integer.parseInt(nums[i]);
+        for(int i = 0;i<nums.length;i++){
+            int temp = Integer.parseInt(nums[i]);
+            if(temp < 0) {
+                throw new NumberFormatException("negatives not allowed : "+temp);
+            }
+            sum += temp;
+        }
         return sum;
     
     }
