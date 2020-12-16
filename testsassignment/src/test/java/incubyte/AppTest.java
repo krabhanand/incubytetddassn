@@ -53,17 +53,27 @@ public class AppTest
         assertEquals(484,stringCalculator.add(temp.toString()));
     }
 
+
+
+
     @Test
     public void addNewLineAsSeparator() throws Exception
     {
         assertEquals(25,stringCalculator.add("2,12\n4\n1,6"));
     }
 
+
+
+
+
     @Test
     public void addCustomDelimiter() throws Exception
     {
         assertEquals(100,stringCalculator.add("//;\n1;2;57;40"));
     }
+
+
+
 
     @Test
     public void addNegativeNumberException()throws Exception
@@ -85,6 +95,28 @@ public class AppTest
         //now verify for both
         assertTrue(actualMessage.contains(expectedMessage));
         assertTrue(actualMessage.contains(""+numExcep));         
+    }
+
+    @Test
+    public void showAllNegativesInException() throws Exception{
+        Exception e = assertThrows(NumberFormatException.class,() -> {stringCalculator.add("//;\n1;-2;32;-5;41;-59");});
+            
+            
+        //message expected from exception
+        String expectedMessage = "negatives not allowed";
+
+        //number expected from exception message
+        int[] numExcepArr = {-2,-5,-59};
+
+        //verify if returned exception has above message and -ve number
+
+        //get exception message
+        String actualMessage = e.getMessage();
+
+        //now verify for both
+        assertTrue(actualMessage.contains(expectedMessage));
+        for(int numExcep:numExcepArr)
+        assertTrue(actualMessage.contains(""+numExcep));
     }
 
 
