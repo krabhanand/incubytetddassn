@@ -1,6 +1,8 @@
 package incubyte;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -29,6 +31,12 @@ public class AppTest
     public void addOneBumberString()
     {
         assertEquals(4,stringCalculator.add("4"));
+    }
+
+    @Test
+    public void addTwoNumberString(){
+        assertEquals(5,stringCalculator.add("2,3"));
+        assertNotEquals(4,stringCalculator.add("2,3"));
     }
     
 }
