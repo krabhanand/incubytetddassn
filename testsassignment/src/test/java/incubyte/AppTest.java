@@ -137,5 +137,11 @@ public class AppTest
     }
 
 
+    @Test
+    public void ignoreGreaterThanThousand() throws Exception
+    {
+        assertEquals(90,stringCalculator.add("2,56,32,4443"));
+    }
+
     
 }
