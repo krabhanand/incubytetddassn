@@ -2,10 +2,10 @@ package incubyte;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 /**
  * Unit test for simple App.
  */
@@ -65,6 +65,32 @@ public class AppTest
         assertEquals(100,stringCalculator.add("//;\n1;2;57;40"));
     }
 
+    @Test(expected = Exception.class)
+    public void addNegativeNumberException()
+    {
+        try {
+            stringCalculator.add("//;\n1;-2;32;-5;41;-59");
+            
+        } catch (Exception e) {
+            
+        //message expected from exception
+        String expectedMessage = "negatives not allowed";
+
+        //number expected from exception message
+        int numExcep = -2;
+
+        //verify if returned exception has above message and -ve number
+
+        //get exception message
+        String actualMessage = e.getMessage();
+
+        //now verify for both
+        assertTrue(actualMessage.contains(expectedMessage));
+        assertTrue(actualMessage.contains(""+numExcep));
+        }
+        
+        
+    }
 
 
 
