@@ -17,10 +17,7 @@ public class AppTest
 
     private static StringCalculator stringCalculator;
 
-    @BeforeEach
-    public void setCounterZero(){
-        stringCalculator.setCallCount(0);
-    }
+
 
 
     @BeforeClass
@@ -129,7 +126,8 @@ public class AppTest
 
 
     @Test
-    public void testCallCount(){
+    public void testCallCount() throws Exception{
+        stringCalculator.setCallCount(0);
         stringCalculator.add("2,1,6,4");
         stringCalculator.add("2,1,6,8");
         stringCalculator.add("2,1,6,7");

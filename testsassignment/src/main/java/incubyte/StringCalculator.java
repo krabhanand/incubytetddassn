@@ -6,11 +6,15 @@ import java.util.regex.Pattern;
 
 public class StringCalculator{
     
-    
-    StringCalculator(){
+    private int callCount;
 
+    StringCalculator(){
+        this.callCount = 0;
     }
+
     public int add(String numbers) throws Exception{
+        // set call count, increase by 1 on each call
+        setCallCount(getCallCount()+1);
         if(numbers.equals(""))
             return 0;
         Pattern pattern;
@@ -46,5 +50,14 @@ public class StringCalculator{
         }
         return sum;
     
+    }
+
+    public void setCallCount(int count){
+        this.callCount = count;
+    }
+
+    public int getCallCount()
+    {
+        return callCount;
     }
 }
