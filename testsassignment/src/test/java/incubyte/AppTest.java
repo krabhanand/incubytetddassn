@@ -24,4 +24,11 @@ public class AppTest
     {
         assertEquals(0,stringCalculator.add(""));
     }
+
+    @Test
+    public void addOneBumberString()
+    {
+        assertEquals(4,stringCalculator.add("4"));
+    }
+    
 }
