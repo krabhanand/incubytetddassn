@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 /**
  * Unit test for simple App.
  */
@@ -28,24 +27,24 @@ public class AppTest
 
     //give empty string as parameter to add function
     @Test
-    public void addEmptyString() throws Exception {
+    public void addEmptyString() throws NumberFormatException {
         assertEquals(0,stringCalculator.add(""));
     }
 
     @Test
-    public void addOneBumberString() throws Exception
+    public void addOneBumberString() throws NumberFormatException
     {
         assertEquals(4,stringCalculator.add("4"));
     }
 
     @Test
-    public void addTwoNumberString() throws Exception{
+    public void addTwoNumberString() throws NumberFormatException{
         assertEquals(5,stringCalculator.add("2,3"));
         assertNotEquals(4,stringCalculator.add("2,3"));
     }
 
     @Test
-    public void addMultipleNumberString() throws Exception{
+    public void addMultipleNumberString() throws NumberFormatException{
         assertEquals(6,stringCalculator.add("1,2,3"));
         assertEquals(20,stringCalculator.add("2,5,6,3,4"));
         assertEquals(55,stringCalculator.add("1,2,3,4,5,6,7,8,9,10"));
@@ -62,7 +61,7 @@ public class AppTest
 
 
     @Test
-    public void addNewLineAsSeparator() throws Exception
+    public void addNewLineAsSeparator() throws NumberFormatException
     {
         assertEquals(25,stringCalculator.add("2,12\n4\n1,6"));
     }
@@ -72,7 +71,7 @@ public class AppTest
 
 
     @Test
-    public void addCustomDelimiter() throws Exception
+    public void addCustomDelimiter() throws NumberFormatException
     {
         assertEquals(100,stringCalculator.add("//;\n1;2;57;40"));
     }
@@ -81,9 +80,9 @@ public class AppTest
 
 
     @Test
-    public void addNegativeNumberException()throws Exception
+    public void addNegativeNumberNumberFormatException()throws NumberFormatException
     {
-        Exception e = assertThrows(NumberFormatException.class,() -> {stringCalculator.add("//;\n1;-2;32;-5;41;-59");});
+        NumberFormatException e = assertThrows(NumberFormatException.class,() -> {stringCalculator.add("//;\n1;-2;32;-5;41;-59");});
             
             
         //message expected from exception
@@ -103,8 +102,8 @@ public class AppTest
     }
 
     @Test
-    public void showAllNegativesInException() throws Exception{
-        Exception e = assertThrows(NumberFormatException.class,() -> {stringCalculator.add("//;\n1;-2;32;-5;41;-59");});
+    public void showAllNegativesInNumberFormatException() throws NumberFormatException{
+        NumberFormatException e = assertThrows(NumberFormatException.class,() -> {stringCalculator.add("//;\n1;-2;32;-5;41;-59");});
             
             
         //message expected from exception
@@ -126,7 +125,7 @@ public class AppTest
 
 
     @Test
-    public void testCallCount() throws Exception{
+    public void testCallCount() throws NumberFormatException{
         stringCalculator.setCallCount(0);
         stringCalculator.add("2,1,6,4");
         stringCalculator.add("2,1,6,8");
@@ -138,18 +137,18 @@ public class AppTest
 
 
     @Test
-    public void ignoreGreaterThanThousand() throws Exception
+    public void ignoreGreaterThanThousand() throws NumberFormatException
     {
         assertEquals(90,stringCalculator.add("2,56,32,4443"));
     }
 
     @Test
-    public void allowDelimitersOfAllLengths() throws Exception{
+    public void allowDelimitersOfAllLengths() throws NumberFormatException{
         assertEquals(50,stringCalculator.add("//[***]\n1***2***47"));
     }
 
     @Test
-    public void allowMultipleDelimitersOfAllLengths() throws Exception{
+    public void allowMultipleDelimitersOfAllLengths() throws NumberFormatException{
         assertEquals(50,stringCalculator.add("//[***][%]\n1***2%47"));
     }
 

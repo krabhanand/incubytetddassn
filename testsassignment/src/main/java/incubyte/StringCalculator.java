@@ -12,7 +12,7 @@ public class StringCalculator{
         this.callCount = 0;
     }
 
-    public int add(String numbers) throws Exception{
+    public int add(String numbers) throws NumberFormatException{
         // set call count, increase by 1 on each call
         setCallCount(getCallCount()+1);
 
