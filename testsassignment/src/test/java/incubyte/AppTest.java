@@ -148,7 +148,12 @@ public class AppTest
         assertEquals(50,stringCalculator.add("//[***]\n1***2***47"));
     }
 
-    
+    @Test
+    public void allowMultipleDelimitersOfAllLengths() throws Exception{
+        assertEquals(50,stringCalculator.add("//[***][%]\n1***2%47"));
+    }
+
+
 
     
 }
