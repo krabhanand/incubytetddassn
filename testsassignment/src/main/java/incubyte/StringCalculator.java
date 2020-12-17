@@ -28,8 +28,23 @@ public class StringCalculator{
             String[] sepdelim = numbers.split("\n");
             //get delimiter from line
             delimiter = sepdelim[0].split("//")[1];
+           // System.out.println(delimiter);
+            pattern = Pattern.compile("\\[");
+            matcher = pattern.matcher(delimiter);
+            if(matcher.find())
+            {
+                delimiter = delimiter.split("(^\\[)")[1];
+                delimiter = delimiter.split("]")[0];
+            }
+            if(delimiter.length() > 1)
+            {
+                delimiter = "[\\"+delimiter.charAt(0)+"]+";
+            }
+            
+            System.out.println(delimiter);
             //put array of numbers in numbers string
             numbers = sepdelim[1];
+            System.out.println(numbers);
         }
         else{
             delimiter = ",|\n";
@@ -37,6 +52,7 @@ public class StringCalculator{
         String[] nums = numbers.split(delimiter);
         int sum = 0;
         for(int i = 0;i<nums.length;i++){
+            System.out.println(nums[i]);
             int temp = Integer.parseInt(nums[i]);
             if(temp < 0) {
                 StringBuilder numExepList = new StringBuilder("");
